@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BestFS.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\Comparator .cs" />
     <Compile Include="DFS.cs" />
     <Compile Include="ICostable.cs" />

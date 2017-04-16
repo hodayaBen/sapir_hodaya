@@ -48,7 +48,7 @@ namespace SearchAlgorithmsLib
                     break;
                 }
                 List<State<Position>> l = searchable.getAllPossibleStates(n);
-                Console.WriteLine("count " + l.Count);
+                
                 foreach (var x in l)
                 {
                     if ((!(closed.Contains(x)))

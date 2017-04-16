@@ -27,21 +27,22 @@ namespace ex1_20
             if ((s.state.Row) + 1 < myMaze.Rows)
             {
                 Position p = new Position(s.state.Row + 1, s.state.Col);
-                if (p.GetType().ToString().Equals("Free"))
+                
+                if (myMaze[p.Row, p.Col].Equals(CellType.Free))
                     list.Add(StatePool.getState(p, s, s.cost + 1));
             }
             //neghboor left
             if (s.state.Col - 1 >= 0)
             {
                 Position p = new Position(s.state.Row, s.state.Col - 1);
-                if (p.GetType().ToString().Equals("Free"))
+                if (myMaze[p.Row, p.Col].Equals(CellType.Free))
                     list.Add(StatePool.getState(p, s, s.cost + 1));
             }
             //right neghboor
             if (s.state.Col + 1 < myMaze.Cols)
             {
                 Position p = new Position(s.state.Row, s.state.Col + 1);
-                if (p.GetType().ToString().Equals("Free"))
+                if (myMaze[p.Row, p.Col].Equals(CellType.Free))
                     list.Add(StatePool.getState(p, s, s.cost + 1));
 
             }
@@ -49,7 +50,7 @@ namespace ex1_20
             if (s.state.Row - 1 >= 0)
             {
                 Position p = new Position(s.state.Row - 1, s.state.Col);
-                if (p.GetType().ToString().Equals("Free"))
+                if (myMaze[p.Row, p.Col].Equals(CellType.Free))
                     list.Add(StatePool.getState(p, s, s.cost + 1));
             }
             return list;
