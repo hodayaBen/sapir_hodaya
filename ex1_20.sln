@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex1_20", "ex1_20\ex1_20.csproj", "{B7BB31F7-2200-42FE-95AD-B61913EF0901}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7BB31F7-2200-42FE-95AD-B61913EF0901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7BB31F7-2200-42FE-95AD-B61913EF0901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7BB31F7-2200-42FE-95AD-B61913EF0901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7BB31F7-2200-42FE-95AD-B61913EF0901}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
