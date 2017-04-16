@@ -21,6 +21,7 @@ namespace ex1_20
 
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
+            Console.WriteLine("aa");
             //neghboor up
             List<State<Position>> list = new List<State<Position>>();
             if ((s.state.Row) + 1 < myMaze.Rows)
