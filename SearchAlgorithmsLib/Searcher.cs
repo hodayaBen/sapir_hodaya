@@ -7,15 +7,15 @@ using MazeGeneratorLib;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    public abstract class Searcher : ISearcher
+    public abstract class Searcher<T> : ISearcher<T>
     {
-        protected MyQueue<State<Position>> openList;
+        protected MyQueue<State<T>> openList;
         protected int evaluatedNodes;
         public int getNumberOfNodesEvaluated()
         {
             return evaluatedNodes;
         }
         
-        public abstract Solution search(ISearchable searchable);
+        public abstract Solution<T> search(ISearchable<T> searchable);
     }
 }

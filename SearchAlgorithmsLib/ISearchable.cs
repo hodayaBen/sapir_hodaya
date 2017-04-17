@@ -10,11 +10,11 @@ namespace SearchAlgorithmsLib
     /// <summary>
     /// interface of from we which can solve
     /// </summary>
-    public interface ISearchable
+    public interface ISearchable<T>
     {
-        State<Position> getInitialState();
-        State<Position> getGoalState();
-        List<State<Position>> getAllPossibleStates(State<Position> s);
+        State<T> getInitialState();
+        State<T> getGoalState();
+        List<State<T>> getAllPossibleStates(State<T> s);
     }
 
 }

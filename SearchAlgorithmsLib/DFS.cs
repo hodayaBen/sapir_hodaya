@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
-    public class DFS : Searcher
+    public class DFS<T> : Searcher<T>
     {
 
-        public override Solution search(ISearchable searchable)
+        public override Solution<T> search(ISearchable<T> searchable)
         {
             throw new NotImplementedException();
         }

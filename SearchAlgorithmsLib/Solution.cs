@@ -10,21 +10,21 @@ namespace SearchAlgorithmsLib
     /// <summary>
     /// save the path of the maze
     /// </summary>
-    public class Solution
+    public class Solution<T>
     {
-        private List<State<Position>> solve;
+        private List<State<T>> solve;
         /// <summary>
         /// constructor 
         /// </summary>
         public Solution()
         {
-            this.solve = new List<State<Position>>();
+            this.solve = new List<State<T>>();
         }
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="list"></param>
-        public Solution(List<State<Position>> list)
+        public Solution(List<State<T>> list)
         {
             this.solve = list;
         }
@@ -32,7 +32,7 @@ namespace SearchAlgorithmsLib
         /// get the solition
         /// </summary>
         /// <returns></returns>
-        public List<State<Position>> getSolve()
+        public List<State<T>> getSolve()
         {
             return this.solve;
         }
@@ -40,7 +40,7 @@ namespace SearchAlgorithmsLib
         /// add node to solition 
         /// </summary>
         /// <param name="node"></param>
-        public void addNode(State<Position> node)
+        public void addNode(State<T> node)
         {
             this.solve.Add(node);
         }

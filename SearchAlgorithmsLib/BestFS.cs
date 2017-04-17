@@ -7,7 +7,7 @@ using MazeGeneratorLib;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    public class BestFS : Searcher
+    public class BestFS<T> : Searcher<T>
     {
         /// <summary>
         /// constructor of best first 
@@ -15,7 +15,7 @@ namespace SearchAlgorithmsLib
         /// </summary>
         public BestFS()
         {
-            openList = new MyPriorityQueue<State<Position>>();
+            openList = new MyPriorityQueue<State<T>>();
             evaluatedNodes = 0;
         }
         // a property of openList
@@ -28,60 +28,52 @@ namespace SearchAlgorithmsLib
         /// </summary>
         /// <param name="searchable">searchable maze we can check for wanted way</param>
         /// <returns>shorted way fron start to end of maze</returns>
-        public override Solution search(ISearchable searchable)
+        public override Solution<T> search(ISearchable<T> searchable)
         {
-            Solution s = new Solution();
-
-            State<Position> n = StatePool.getState(searchable.getInitialState().state, null, 0);
+            Console.WriteLine(searchable.getInitialState().state.ToString());
+            Console.WriteLine(searchable.getGoalState().state.ToString());
+            Solution<T> s = new Solution<T>();
+            State<T> n = new State<T>(searchable.getInitialState().state);
+            n.cost = 0;
+            n.cameFrom = null;
             this.openList.Add(n);
-            HashSet<State<Position>> closed = new HashSet<State<Position>>();
+            HashSet<State<T>> closed = new HashSet<State<T>>();
             while (OpenListSize() > 0)
-            {       
+            {
+                n = this.openList.Pop();
                 closed.Add(n);
                 if (n.state.Equals(searchable.getGoalState().state))
-                {       
+                {
                     while (n != null)
-                    {       
+                    {
                         s.addNode(n);
+                        Console.WriteLine(n.state.ToString());
                         n = n.cameFrom;
                     }
                     break;
                 }
-                List<State<Position>> l = searchable.getAllPossibleStates(n);
-                
+                List<State<T>> l = searchable.getAllPossibleStates(n);
                 foreach (var x in l)
                 {
+                    Console.WriteLine(x.state.ToString());
                     if ((!(closed.Contains(x)))
                        && !(openList.Contains(x)))
                     {
-                        x.cost = n.cost + GetCost(x.state, searchable.getGoalState().state); ;
+                        x.cost = n.cost + 1 ;
                         x.cameFrom = n;
                         openList.Add(x);
                     }
-                    else if ((!(closed.Contains(x))) && (x.cost > n.cost + GetCost(x.state, searchable.getGoalState().state)))
+                    else if ((!(closed.Contains(x))) && (x.cost > n.cost + 1))
                     {
-                        openList.remove(x);
-                        x.cost = n.cost + GetCost(x.state, searchable.getGoalState().state);
+                        Console.WriteLine(x.state.ToString() + " " + x.cost);
+                        x.cost = n.cost + 1;
                         x.cameFrom = n;
+                        openList.remove(x);
                         openList.Add(x);
                     }
                 }
-
-                n = this.openList.Pop();
             }
             return s;
         }
-        /// <summary>
-        /// getter of cost of the distance of node
-        /// x from goal node
-        /// </summary>
-        /// <param name="x">the node we will seek his cost</param>
-        /// <param name="goal">goal node in the maze </param>
-        /// <returns>cost of x in  relation to goal</returns>
-        public virtual double GetCost(Position x, Position goal)
-        {
-            return Math.Abs(x.Row - goal.Row) + Math.Abs(x.Col - goal.Col);
-        }
     }
-
 }

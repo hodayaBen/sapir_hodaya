@@ -7,11 +7,11 @@ using MazeGeneratorLib;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    public static class StatePool
+    public static class StatePool<T>
     {
-        static Dictionary<int, State<Position>> dictionary = new Dictionary<int, State<Position>>();
-        public static State<Position> getState(Position t, State<Position> comeFrom, double cost) {
-            State<Position> s;
+        static Dictionary<int, State<T>> dictionary = new Dictionary<int, State<T>>();
+        public static State<T> getState(T t, State<T> comeFrom, double cost) {
+            State<T> s;
             //save state acoording posion
             if (dictionary.ContainsKey(t.ToString().GetHashCode())) {
                 dictionary.TryGetValue(t.ToString().GetHashCode(), out s);
@@ -21,7 +21,7 @@ namespace SearchAlgorithmsLib
             }
             else
             {
-                s = new State<Position>(t);
+                s = new State<T>(t);
                 s.cameFrom = comeFrom;
                 s.cost = cost;
                 dictionary.Add(s.GetHashCode(),s);
