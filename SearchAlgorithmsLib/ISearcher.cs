@@ -7,10 +7,10 @@ using MazeGeneratorLib;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    public interface ISearcher<T>
+    public interface ISearcher<T, S>
     {
         // the search method
-        Solution<T> search(ISearchable<T> searchable);
+        Solution<S> search(ISearchable<T> searchable);
         // get how many nodes were evaluated by the algorithm
         int getNumberOfNodesEvaluated();
     }

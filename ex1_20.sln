@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex1_20", "ex1_20\ex1_20.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csproj", "{B8025FEE-92B8-471C-801F-85238C5C5FC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

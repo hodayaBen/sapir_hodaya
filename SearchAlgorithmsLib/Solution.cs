@@ -12,19 +12,19 @@ namespace SearchAlgorithmsLib
     /// </summary>
     public class Solution<T>
     {
-        private List<State<T>> solve;
+        private List<T> solve;
         /// <summary>
         /// constructor 
         /// </summary>
         public Solution()
         {
-            this.solve = new List<State<T>>();
+            this.solve = new List<T>();
         }
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="list"></param>
-        public Solution(List<State<T>> list)
+        public Solution(List<T> list)
         {
             this.solve = list;
         }
@@ -32,7 +32,7 @@ namespace SearchAlgorithmsLib
         /// get the solition
         /// </summary>
         /// <returns></returns>
-        public List<State<T>> getSolve()
+        public List<T> getSolve()
         {
             return this.solve;
         }
@@ -40,14 +40,14 @@ namespace SearchAlgorithmsLib
         /// add node to solition 
         /// </summary>
         /// <param name="node"></param>
-        public void addNode(State<T> node)
+        public void addNode(T node)
         {
             this.solve.Add(node);
         }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            solve.ForEach(item =>sb.Append(item.state.ToString() + ","));
+            solve.ForEach(item =>sb.Append(item.ToString() + ","));
             return sb.ToString();
         }
     }

@@ -7,7 +7,7 @@ using MazeGeneratorLib;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    public class BestFS<T> : Searcher<T>
+    public class BestFS : Searcher<Position, Direction>
     {
         /// <summary>
         /// constructor of best first 
@@ -15,7 +15,7 @@ namespace SearchAlgorithmsLib
         /// </summary>
         public BestFS()
         {
-            openList = new MyPriorityQueue<State<T>>();
+            openList = new MyPriorityQueue<State<Position>>();
             evaluatedNodes = 0;
         }
         // a property of openList
@@ -28,31 +28,61 @@ namespace SearchAlgorithmsLib
         /// </summary>
         /// <param name="searchable">searchable maze we can check for wanted way</param>
         /// <returns>shorted way fron start to end of maze</returns>
-        public override Solution<T> search(ISearchable<T> searchable)
+        public override Solution<Direction> search(ISearchable<Position> searchable)
         {
             Console.WriteLine(searchable.getInitialState().state.ToString());
             Console.WriteLine(searchable.getGoalState().state.ToString());
-            Solution<T> s = new Solution<T>();
-            State<T> n = new State<T>(searchable.getInitialState().state);
+            Solution<Direction> s = new Solution<Direction>();
+            State<Position> n = new State<Position>(searchable.getInitialState().state);
             n.cost = 0;
             n.cameFrom = null;
             this.openList.Add(n);
-            HashSet<State<T>> closed = new HashSet<State<T>>();
+            HashSet<State<Position>> closed = new HashSet<State<Position>>();
             while (OpenListSize() > 0)
             {
                 n = this.openList.Pop();
                 closed.Add(n);
                 if (n.state.Equals(searchable.getGoalState().state))
                 {
+                    State<Position> pre;
+                    Stack<State<Position>> stack = new Stack<State<Position>>();
                     while (n != null)
                     {
-                        s.addNode(n);
-                        Console.WriteLine(n.state.ToString());
+                        stack.Push(n);
+                        //s.addNode(n);
+                        //Console.WriteLine(n.state.ToString());
                         n = n.cameFrom;
+                    }
+                    n = stack.Pop();
+                    while (stack.Count != 0 )
+                    {
+                        pre = n;
+                        n = stack.Pop();
+                        int dif = pre.state.Row - n.state.Row;
+                        if(dif == -1)
+                        {
+                            s.addNode(Direction.Down);
+                        }
+                        else if(dif == 1)
+                        {
+                            s.addNode(Direction.Up);
+                        }
+                        else
+                        {
+                            dif = pre.state.Col - n.state.Col;
+                            if (dif == -1)
+                            {
+                                s.addNode(Direction.Right);
+                            }
+                            else if (dif == 1)
+                            {
+                                s.addNode(Direction.Left);
+                            }
+                        }
                     }
                     break;
                 }
-                List<State<T>> l = searchable.getAllPossibleStates(n);
+                List<State<Position>> l = searchable.getAllPossibleStates(n);
                 foreach (var x in l)
                 {
                     Console.WriteLine(x.state.ToString());
