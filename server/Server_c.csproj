@@ -53,16 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
-    <Compile Include="ICommandable.cs" />
-    <Compile Include="MazeModel.cs" />
-    <Compile Include="Option1.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="GenerateMazeCommand.cs" />
     <Compile Include="Option2.cs" />
     <Compile Include="Option3.cs" />
     <Compile Include="Option6.cs" />
     <Compile Include="Option5.cs" />
     <Compile Include="Option4.cs" />
     <Compile Include="Option7.cs" />
-    <Compile Include="Package1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

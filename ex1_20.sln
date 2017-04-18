@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex1_20", "ex1_20\ex1_20.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{4224776D-D0A3-4806-BAC1-BCA9384CBF4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csproj", "{B8025FEE-92B8-471C-801F-85238C5C5FC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server_c", "server\Server_c.csproj", "{B8025FEE-92B8-471C-801F-85238C5C5FC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client_v", "Client_v\Client_v.csproj", "{6E45207B-DDAB-4C8E-B276-D969ED1DC01D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{B3F7746C-DC7F-42A3-B817-A40A29CECDFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8025FEE-92B8-471C-801F-85238C5C5FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E45207B-DDAB-4C8E-B276-D969ED1DC01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E45207B-DDAB-4C8E-B276-D969ED1DC01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E45207B-DDAB-4C8E-B276-D969ED1DC01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E45207B-DDAB-4C8E-B276-D969ED1DC01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F7746C-DC7F-42A3-B817-A40A29CECDFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F7746C-DC7F-42A3-B817-A40A29CECDFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F7746C-DC7F-42A3-B817-A40A29CECDFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F7746C-DC7F-42A3-B817-A40A29CECDFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

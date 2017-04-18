@@ -12,7 +12,7 @@ namespace SearchAlgorithmsLib
     /// </summary>
     public class Solution<T>
     {
-        private List<T> solve;
+        protected List<T> solve;
         /// <summary>
         /// constructor 
         /// </summary>

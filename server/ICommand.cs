@@ -10,8 +10,7 @@ namespace Server1
     /// <summary>
     ///  command pattern that just execute a method by order name
     /// </summary>
-    public interface ICommandable
-    {
-        Package1 execute(string com, MazeModel game, int id);
+    interface ICommand {
+        string Execute(string[] args, TcpClient client = null);
     }
 }
