@@ -149,8 +149,7 @@ namespace Server1
             }
             else
             {
-                return AddGame(name);
-            }
+                return AddGame(name); }
         }
         ///// <summary>
         ///// get the commend and split it
