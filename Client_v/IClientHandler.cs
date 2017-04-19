@@ -13,10 +13,7 @@ namespace Client_v
     /// to allow to send message even if we didnt 
     /// recived a anwser to prev send
     /// </summary>
-    interface ICommuntable
-    {
-        string ReceviveMsg();
-        void SendMsg();
-
+    public interface IClientHandler {
+        void HandleClient(TcpClient client);
     }
 }
