@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B8025FEE-92B8-471C-801F-85238C5C5FC3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{5D9F6FC8-C16A-49B2-9CDA-408E327C3F91}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>server</RootNamespace>
-    <AssemblyName>server</AssemblyName>
+    <RootNamespace>Controller</RootNamespace>
+    <AssemblyName>Controller</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -52,45 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CloseCommand.cs" />
-    <Compile Include="Controller\Controller.cs" />
-    <Compile Include="Controller\GenerateMazeCommand.cs" />
-    <Compile Include="Controller\ICommand.cs" />
-    <Compile Include="Controller\JoinCommand.cs" />
-    <Compile Include="Controller\ListCommand.cs" />
-    <Compile Include="Controller\PlayCommand.cs" />
-    <Compile Include="Controller\SolveMazeCommandcs.cs" />
-    <Compile Include="Controller\StartCommand.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="CloseCommand.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="GenerateMazeCommand.cs" />
-    <Compile Include="ICommandable.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="JoinCommand.cs" />
-    <Compile Include="MazeModel.cs" />
-    <Compile Include="Model\Game.cs" />
-    <Compile Include="Model\IModel.cs" />
-    <Compile Include="Model\MazeModel.cs" />
-    <Compile Include="Model\SearchableMaze .cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ListCommand.cs" />
+    <Compile Include="PlayCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Server.cs" />
-    <Compile Include="View\ClientHandle.cs" />
-    <Compile Include="View\IClientHandler.cs" />
+    <Compile Include="SolveMazeCommandcs.cs" />
+    <Compile Include="StartCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj">
-      <Project>{4224776d-d0a3-4806-bac1-bca9384cbf4c}</Project>
-      <Name>SearchAlgorithmsLib</Name>
-    </ProjectReference>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
