@@ -58,6 +58,7 @@
     <Compile Include="Controller\ICommand.cs" />
     <Compile Include="Controller\JoinCommand.cs" />
     <Compile Include="Controller\ListCommand.cs" />
+    <Compile Include="Controller\PasrseSolve.cs" />
     <Compile Include="Controller\PlayCommand.cs" />
     <Compile Include="Controller\SolveMazeCommandcs.cs" />
     <Compile Include="Controller\StartCommand.cs" />

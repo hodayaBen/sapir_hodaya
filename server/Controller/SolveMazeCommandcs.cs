@@ -2,6 +2,9 @@
 using System.Net.Sockets;
 using SearchAlgorithmsLib;
 using server.Model;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System;
 namespace server.Controller
 {
     class SolveMazeCommand : ICommand
@@ -15,9 +18,11 @@ namespace server.Controller
         {
             string name = args[0];
             int algo = int.Parse(args[1]);
-
-            SolutionDetails<Direction> sol = model.SolveMaze(name, algo);
-            return sol.ToJSON();
+            Solution<Direction> sol= model.SolveMaze(name, algo);
+            PasrseSolve p = new PasrseSolve(name, sol.getSolve(), sol.getSolve().Count);
+            Console.WriteLine(JsonConvert.SerializeObject(p));
+            return JsonConvert.SerializeObject(p);
+           
         }
     }
 }

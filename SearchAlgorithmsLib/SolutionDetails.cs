@@ -1,4 +1,5 @@
-﻿namespace SearchAlgorithmsLib
+﻿
+namespace SearchAlgorithmsLib
 {
     public class SolutionDetails<T> : Solution<T>
     {
@@ -8,9 +9,6 @@
             this.solve = s.getSolve();
             this.NodesEvaluated = ne;
         }
-        public string ToJSON()
-        {
-            return "...";
-        }
+       
     }
 }

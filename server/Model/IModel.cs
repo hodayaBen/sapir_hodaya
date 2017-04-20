@@ -8,7 +8,7 @@ namespace server.Model
     {
 
         Maze GenerateMaze(string name, int rows, int cols);
-        SolutionDetails<Direction> SolveMaze(string name, int algo);
+        Solution<Direction> SolveMaze(string name, int algo);
         string StartGame(string name, int rows, int cols, TcpClient client);
         String list();
         Game JoinGame(string name, TcpClient client);

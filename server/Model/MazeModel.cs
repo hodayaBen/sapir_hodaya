@@ -16,7 +16,7 @@ namespace server.Model
         public Dictionary<string, Game> games { get; set; }
         public Dictionary<TcpClient, string> clientInGames { get; set; }
         public Dictionary<string, Maze> Mazes { get; set; }
-        public Dictionary<string, SolutionDetails<Direction>> Sol { get; set; }
+        public Dictionary<string, Solution<Direction>> Sol { get; set; }
         public Controller.Controller controller { get; set; }
         const int BFS = 0;
         const int DFS1 = 1;
@@ -30,7 +30,7 @@ namespace server.Model
         {
             Mazes = new Dictionary<string, Maze>();
             games = new Dictionary<string, Game>();
-            Sol = new Dictionary<string, SolutionDetails<Direction>>();
+            Sol = new Dictionary<string, Solution<Direction>>();
             clientInGames = new Dictionary<TcpClient, string>();
             controller = conr;
         }
@@ -49,13 +49,14 @@ namespace server.Model
                 IMazeGenerator mg = new DFSMazeGenerator();
                 m = mg.Generate(rows, cols);
                 m.Name = name;
+                this.Mazes.Add(name, m);
                 return m;
             }
         }
 
-        public SolutionDetails<Direction> SolveMaze(string name, int algo)
+        public Solution<Direction> SolveMaze(string name, int algo)
         {
-            SolutionDetails<Direction> sol_det;
+            Solution<Direction> sol_det;
             Searcher<Position, Direction> s;
             if (Sol.TryGetValue(name, out sol_det))
             {
