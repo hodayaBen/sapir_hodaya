@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using Newtonsoft.Json;
-using System.Web.Script.Serialization;
+//using Newtonsoft.Json;
+//using System.Web.Script.Serialization;
 using MazeLib;
 using MazeGeneratorLib;
 using System.Net.Sockets;
-
-namespace Controller
+using server.Model;
+namespace server.Controller
 {
     public class PlayCommand : ICommand
     {
-        private MazeModle model;
+        private IModel model;
         public PlayCommand(IModel model)
         {
             this.model = model;
@@ -27,7 +27,7 @@ namespace Controller
 
 
 
-            return maze.ToJSON();
+            return s;
         }
     }
 }

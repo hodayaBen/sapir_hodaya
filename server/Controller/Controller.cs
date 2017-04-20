@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Model;
+using server.Model;
 using System.Net.Sockets;
-
-namespace Controller
+using server.View;
+namespace server.Controller
 {
     public class Controller
     {
         private Dictionary<string, ICommand> commands;
         private IModel model;
-     
+        private ClientSendMessage sender;
         public Controller()
         {
-            model = new MazeModel();
+            model = new MazeModel(this);
             commands = new Dictionary<string, ICommand>();
             commands.Add("generate", new GenerateMazeCommand(model));
-            commands.Add("Solve", new SolveMazeCommand(model));
+            commands.Add("solve", new SolveMazeCommand(model));
+            commands.Add("start", new StartCommand(model));
+            commands.Add("list", new ListCommand(model));
+            commands.Add("join", new JoinCommand(model));
+            commands.Add("play", new PlayCommand(model));
+            commands.Add("close", new CloseCommand(model));
+            sender = new ClientSendMessage();
         }
 
 
@@ -32,10 +37,10 @@ namespace Controller
             ICommand command = commands[commandKey];
             return command.Execute(args, client);
         }
-        public void SendMess(TcpClient client,string mazeString)
+        public void SendToClient(TcpClient client, string msg)
         {
-
+            sender.SendToClient(client, msg);
         }
     }
-    
+
 }

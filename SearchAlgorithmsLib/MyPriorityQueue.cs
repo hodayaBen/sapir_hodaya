@@ -15,7 +15,7 @@ namespace SearchAlgorithmsLib
         /// <param name="s">who we adding</param>
         public override void Add(T s)
         {
-            if(this.lst.Count ==0)
+            if (this.lst.Count == 0)
             {
                 lst.Insert(0, s);
 
@@ -31,7 +31,7 @@ namespace SearchAlgorithmsLib
                     break;
                 }
             }
-            if(!b)
+            if (!b)
             {
                 lst.Insert(lst.Count - 1, s);
             }

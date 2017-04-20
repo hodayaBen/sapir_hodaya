@@ -8,12 +8,13 @@ using System.IO;
 using MazeLib;
 using MazeGeneratorLib;
 using System.Net.Sockets;
+using server.Model;
 
-namespace Server1
+namespace server.Controller
 {
     public class GenerateMazeCommand : ICommand
     {
-        private MazeModle model;
+        private IModel model;
         public GenerateMazeCommand(IModel model)
         {
             this.model = model;
@@ -24,8 +25,6 @@ namespace Server1
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
             Maze maze = model.GenerateMaze(name, rows, cols);
-
-
 
             return maze.ToJSON();
         }

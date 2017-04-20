@@ -54,16 +54,16 @@ namespace SearchAlgorithmsLib
                         n = n.cameFrom;
                     }
                     n = stack.Pop();
-                    while (stack.Count != 0 )
+                    while (stack.Count != 0)
                     {
                         pre = n;
                         n = stack.Pop();
                         int dif = pre.state.Row - n.state.Row;
-                        if(dif == -1)
+                        if (dif == -1)
                         {
                             s.addNode(Direction.Down);
                         }
-                        else if(dif == 1)
+                        else if (dif == 1)
                         {
                             s.addNode(Direction.Up);
                         }
@@ -89,7 +89,7 @@ namespace SearchAlgorithmsLib
                     if ((!(closed.Contains(x)))
                        && !(openList.Contains(x)))
                     {
-                        x.cost = n.cost + 1 ;
+                        x.cost = n.cost + 1;
                         x.cameFrom = n;
                         openList.Add(x);
                     }

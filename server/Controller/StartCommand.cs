@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json;
-using System.Web.Script.Serialization;
-using MazeLib;
-using MazeGeneratorLib;
-using System.Net.Sockets;
-
-namespace Server1
+﻿using System.Net.Sockets;
+using server.Model;
+namespace server.Controller
 {
     public class StartCommand : ICommand
     {
-        private MazeModle model;
+        private IModel model;
         public StartCommand(IModel model)
         {
             this.model = model;
@@ -24,7 +14,7 @@ namespace Server1
             string name = args[0];
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
-            string ans = model.StartGame(name, rows, cols);
+            string ans = model.StartGame(name, rows, cols, client);
 
 
 

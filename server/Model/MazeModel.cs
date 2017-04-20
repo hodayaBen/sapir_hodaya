@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using MazeGeneratorLib;
 using MazeLib;
 using System.Net.Sockets;
-using Controller;
 using SearchAlgorithmsLib;
-namespace Model
+namespace server.Model
 {
-   // public delegate void answer(int id, string msg);
+    // public delegate void answer(int id, string msg);
     /// <summary>
     /// the model of the project that has all the main class we want to acess
     /// </summary>
-   public class MazeModel : IModel
+    public class MazeModel : IModel
     {
 
         public Dictionary<string, Game> games { get; set; }
@@ -44,9 +40,9 @@ namespace Model
             Maze m;
             if (Mazes.ContainsKey(name))
             {
-                
+
                 return null;
-                
+
             }
             else
             {
@@ -121,7 +117,7 @@ namespace Model
             if (games.TryGetValue(name, out g))
             {
                 g.AddClient(client);
-                
+                controller.SendToClient(g.GetSecondPlayer(client), g.ToJSON());
                 return g;
             }
             else
@@ -132,12 +128,28 @@ namespace Model
 
         public string Play(string move, TcpClient client)
         {
-            throw new NotImplementedException();
+            string name;
+            Game g;
+            if (clientInGames.TryGetValue(client, out name))
+            {
+                if (games.TryGetValue(name, out g))
+                {
+                    string s = g.Play(move, client);
+                    controller.SendToClient(g.GetSecondPlayer(client), s);
+                    return s;
+                }
+            }
+            return "the game not found";
         }
 
-        public string Close(string name)
+        public string Close(string name, TcpClient client)
         {
-            throw new NotImplementedException();
+            Game g;
+            if (games.TryGetValue(name, out g))
+            {
+                controller.SendToClient(g.GetSecondPlayer(client), "close");
+            }
+            return "close";
         }
     }
 }

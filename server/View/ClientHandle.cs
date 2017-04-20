@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 //tcplistener
 using System.Net.Sockets;
-//ipendpoint
-using System.Net;
 using System.IO;
-using Controller;
-namespace Viewer
-    
+
+namespace server.View
+
 {
     class ClientHandler : IClientHandler
     {
-        public void HandleClient(TcpClient client,Controller.Controller controller)
+        public void HandleClient(TcpClient client, Controller.Controller controller)
         {
             new Task(() =>
             {
@@ -23,7 +17,7 @@ namespace Viewer
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
                     string commandLine = reader.ReadLine();
-                    Console.WriteLine("Got command: {0}", commandLine);
+                    // Console.WriteLine("Got command: {0}", commandLine);
                     string result = controller.ExecuteCommand(commandLine, client);
                     writer.Write(result);
                 }

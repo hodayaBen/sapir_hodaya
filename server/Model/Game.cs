@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using MazeLib;
 using MazeGeneratorLib;
 using System.Net.Sockets;
 
-namespace Model
+namespace server.Model
 {
     public class Game
     {
@@ -39,5 +35,27 @@ namespace Model
         {
             return this.myMaze.Name;
         }
+        public string ToJSON()
+        {
+            return myMaze.ToJSON();
+        }
+        public TcpClient GetSecondPlayer(TcpClient client)
+        {
+            if (client1.Equals(client))
+            {
+                return client2;
+            }
+            return client1;
+        }
+        public string Play(string move, TcpClient client)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("{\n");
+            sb.Append("\"Name\": " + "\"" + this.myMaze.Name + "\",\n");
+            sb.Append("\"Direction\": " + move + "\n");
+            sb.Append("}");
+            return sb.ToString();
+        }
     }
 }
+

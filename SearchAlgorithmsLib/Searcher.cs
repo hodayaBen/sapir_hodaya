@@ -15,7 +15,7 @@ namespace SearchAlgorithmsLib
         {
             return evaluatedNodes;
         }
-        
+
         public abstract Solution<S> search(ISearchable<T> searchable);
     }
 }

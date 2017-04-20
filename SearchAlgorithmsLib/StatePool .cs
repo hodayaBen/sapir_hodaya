@@ -10,10 +10,12 @@ namespace SearchAlgorithmsLib
     public static class StatePool<T>
     {
         static Dictionary<int, State<T>> dictionary = new Dictionary<int, State<T>>();
-        public static State<T> getState(T t, State<T> comeFrom, double cost) {
+        public static State<T> getState(T t, State<T> comeFrom, double cost)
+        {
             State<T> s;
             //save state acoording posion
-            if (dictionary.ContainsKey(t.ToString().GetHashCode())) {
+            if (dictionary.ContainsKey(t.ToString().GetHashCode()))
+            {
                 dictionary.TryGetValue(t.ToString().GetHashCode(), out s);
                 s.cameFrom = comeFrom;
                 s.cost = cost;
@@ -24,7 +26,7 @@ namespace SearchAlgorithmsLib
                 s = new State<T>(t);
                 s.cameFrom = comeFrom;
                 s.cost = cost;
-                dictionary.Add(s.GetHashCode(),s);
+                dictionary.Add(s.GetHashCode(), s);
             }
             return s;
         }

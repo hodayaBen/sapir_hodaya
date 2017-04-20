@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
-using MazeLib;
-using MazeGeneratorLib;
 namespace SearchAlgorithmsLib
 {
     /// <summary>
@@ -12,7 +7,7 @@ namespace SearchAlgorithmsLib
     /// </summary>
     public class Solution<T>
     {
-        private List<T> solve;
+        public List<T> solve { get; set; }
         /// <summary>
         /// constructor 
         /// </summary>
@@ -47,7 +42,7 @@ namespace SearchAlgorithmsLib
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            solve.ForEach(item =>sb.Append(item.ToString() + ","));
+            solve.ForEach(item => sb.Append(item.ToString() + ","));
             return sb.ToString();
         }
     }

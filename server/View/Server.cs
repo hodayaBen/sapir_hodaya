@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 //tcplistener
 using System.Net.Sockets;
 //ipendpoint
 using System.Net;
-using Viewer;
-using Controller;
-namespace server
+
+namespace server.View
 {
     class Server
     {
@@ -19,7 +15,7 @@ namespace server
         private TcpListener listener;
         private IClientHandler ch;
         private Controller.Controller controller;
-        public Server(int port, IClientHandler ch,Controller.Controller con)
+        public Server(int port, IClientHandler ch, Controller.Controller con)
         {
             this.controller = con;
             this.port = port;
@@ -43,7 +39,7 @@ namespace server
                         TcpClient client = listener.AcceptTcpClient();
                         Console.WriteLine("Got new connection");
                         //perform the task
-                        ch.HandleClient(client,this.controller);
+                        ch.HandleClient(client, this.controller);
                     }
                     catch (SocketException)
                     {

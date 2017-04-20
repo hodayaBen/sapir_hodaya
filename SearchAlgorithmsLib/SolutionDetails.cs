@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SearchAlgorithmsLib
+﻿namespace SearchAlgorithmsLib
 {
     public class SolutionDetails<T> : Solution<T>
     {
@@ -13,6 +7,10 @@ namespace SearchAlgorithmsLib
         {
             this.solve = s.getSolve();
             this.NodesEvaluated = ne;
+        }
+        public string ToJSON()
+        {
+            return "...";
         }
     }
 }

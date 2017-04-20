@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks;
-//tcplistener
+﻿//tcplistener
 using System.Net.Sockets;
-//ipendpoint
-using System.Net;
-using Controller;
-namespace Viewer
-{ 
+
+namespace server.View
+{
     interface IClientHandler
     {
-        void HandleClient(TcpClient client,Controller.Controller controller);
+        void HandleClient(TcpClient client, Controller.Controller controller);
     }
 }

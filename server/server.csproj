@@ -72,6 +72,7 @@
     <Compile Include="Model\SearchableMaze .cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ClientSendMessage.cs" />
     <Compile Include="View\Server.cs" />
     <Compile Include="View\ClientHandle.cs" />
     <Compile Include="View\IClientHandler.cs" />

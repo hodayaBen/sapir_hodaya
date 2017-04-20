@@ -1,6 +1,6 @@
 ﻿
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,12 +29,13 @@ namespace SearchAlgorithmsLib
             if (lst.Count > 0)
             {
                 int cnt = lst.Count;
-                lst.Insert(cnt-1, s);
+                lst.Insert(cnt - 1, s);
             }
-            else {
+            else
+            {
                 lst.Insert(0, s);
             }
-            
+
         }
         /// <summary>
         /// add a list to queue

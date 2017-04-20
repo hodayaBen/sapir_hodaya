@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MazeGeneratorLib;
 namespace SearchAlgorithmsLib
 {
-    public class State<T>:ICostable
+    public class State<T> : ICostable
     {
         //private T state;
         //private double cost;

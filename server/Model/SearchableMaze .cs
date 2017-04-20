@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MazeGeneratorLib;
+﻿using System.Collections.Generic;
 using MazeLib;
 using SearchAlgorithmsLib;
-namespace Model
+namespace server.Model
 {
     public class SearchableMaze : ISearchable<Position>
     {
@@ -23,7 +18,7 @@ namespace Model
             if ((s.state.Row) + 1 < myMaze.Rows)
             {
                 Position p = new Position(s.state.Row + 1, s.state.Col);
-                
+
                 if (myMaze[p.Row, p.Col].Equals(CellType.Free))
                     //list.Add(StatePool<Position>.getState(p, s, s.cost + 1));
                     list.Add(new State<Position>(p));
