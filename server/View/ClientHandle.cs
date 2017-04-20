@@ -17,12 +17,21 @@ namespace server.View
                 BinaryReader reader = new BinaryReader(stream);
                 BinaryWriter writer = new BinaryWriter(stream);
                 {
-                    
-                    string commandLine = reader.ReadString();
-                   
-                    Console.WriteLine("Got command: {0}", commandLine);
-                    string result = controller.ExecuteCommand(commandLine, client);
-                    writer.Write(result);
+                    while (true)
+                    {
+                        try
+                        {
+                            string commandLine = reader.ReadString();
+
+                            Console.WriteLine("Got command: {0}", commandLine);
+                            string result = controller.ExecuteCommand(commandLine, client);
+                            writer.Write(result);
+                        }
+                        catch
+                        {
+                            break;
+                        }
+                    }
                 }
                 client.Close();
             }).Start();

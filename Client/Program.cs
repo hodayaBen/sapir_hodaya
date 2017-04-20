@@ -35,6 +35,7 @@ namespace Client
                 }
                 else
                 {
+
                     //open a task that will wait for message from the server
                     //run until we got "close" from the server
                     t1 = new Task(() => {
@@ -55,19 +56,18 @@ namespace Client
                         while (run)
                         {
                             //get the command from the user
-                            Console.Write("Please enter a command: ");
-                            command = Console.ReadLine();
+                          //  Console.Write("Please enter a command: ");
+                           // command = Console.ReadLine();
                             // Send data to server
                             writer.Write(command);
+                            writer.Flush();
                             // Get result from server
-                            string result = reader.ReadString();
-                            if (result.Contains("close"))
-                            {
-                                run = false;
-                            }
+                           // string result = reader.ReadString();
+                            
                         }
                     }, ct);
                     t2.Start();
+                    Console.ReadKey();
                 }
                 client.Close();
             }
