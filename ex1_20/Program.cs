@@ -31,10 +31,10 @@ namespace ex1_20
             SearchableMaze sm = new SearchableMaze(maze);
             ISearcher<Position,Direction> searcher = new SearchAlgorithmsLib.BestFS();
             searcher.search(sm).getSolve();
-            Console.WriteLine(searcher.getNumberOfNodesEvaluated());
-            ISearcher<Position,Direction> searcherDFS = new SearchAlgorithmsLib.DFS<Position,Direction>();
-            searcherDFS.search(sm).getSolve();
-            Console.WriteLine(searcherDFS.getNumberOfNodesEvaluated());
+          //  Console.WriteLine(searcher.getNumberOfNodesEvaluated());
+           // ISearcher<Position,Direction> searcherDFS = new SearchAlgorithmsLib.BestFS<Position,Direction>();
+           // searcherDFS.search(sm).getSolve();
+          //  Console.WriteLine(searcherDFS.getNumberOfNodesEvaluated());
         }
     }
 }

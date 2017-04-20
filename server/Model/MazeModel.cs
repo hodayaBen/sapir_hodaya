@@ -40,7 +40,7 @@ namespace server.Model
             Maze m;
             if (Mazes.ContainsKey(name))
             {
-
+                //print error 
                 return null;
 
             }

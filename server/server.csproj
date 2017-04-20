@@ -62,10 +62,6 @@
     <Compile Include="Controller\SolveMazeCommandcs.cs" />
     <Compile Include="Controller\StartCommand.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GenerateMazeCommand.cs" />
-    <Compile Include="ICommandable.cs" />
-    <Compile Include="JoinCommand.cs" />
-    <Compile Include="MazeModel.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\MazeModel.cs" />

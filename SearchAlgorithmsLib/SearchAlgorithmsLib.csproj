@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveMaze.cs" />
     <Compile Include="BestFS.cs" />
     <Compile Include="Properties\Comparator .cs" />
     <Compile Include="DFS.cs" />
