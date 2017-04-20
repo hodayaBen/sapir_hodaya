@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+
+
+
+ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -18,9 +22,12 @@ namespace Client
             var ts = new CancellationTokenSource();
             CancellationToken ct = ts.Token;
             Console.WriteLine("You are connected");
-            NetworkStream stream = client.GetStream();
-            BinaryReader reader = new BinaryReader(stream);
-            BinaryWriter writer = new BinaryWriter(stream);
+            using (NetworkStream stream = client.GetStream())
+            using (BinaryReader reader = new BinaryReader(stream))
+              using ( BinaryWriter writer = new BinaryWriter(stream))
+           // NetworkStream stream = client.GetStream();
+           // StreamReader reader = new StreamReader(stream);
+           // StreamWriter writer = new StreamWriter(stream);
             {
                 Console.Write("Please enter a command: ");
                 string command = Console.ReadLine();
@@ -28,49 +35,52 @@ namespace Client
                 {
                     writer.Write(command);
                     writer.Flush();
-                    // Get result from server
+                    //Get result from server
                     string result = reader.ReadString();
-                    Console.WriteLine("Result = {0}", result);
+                   Console.WriteLine("Result = {0}", result);
                     Console.ReadKey();
+                   
                 }
                 else
                 {
 
                     //open a task that will wait for message from the server
                     //run until we got "close" from the server
-                    t1 = new Task(() => {
-                        while (run)
-                        {
-                            string result = reader.ReadString();
-                            if (result.Contains("close"))
-                            {
-                                run = false;
-                                Console.WriteLine("close connection");
-                                ts.Cancel();
-                            }
-                        }
-                    });
-                    t1.Start();
+
                     t2 = new Task(() =>
                     {
                         while (run)
                         {
+                           
                             //get the command from the user
-                          //  Console.Write("Please enter a command: ");
-                           // command = Console.ReadLine();
-                            // Send data to server
+                            Console.WriteLine("arrive");
                             writer.Write(command);
                             writer.Flush();
-                            // Get result from server
-                           // string result = reader.ReadString();
-                            
+                            Console.Write("Please enter a command: ");
+                            command = Console.ReadLine();
+
                         }
                     }, ct);
                     t2.Start();
-                    Console.ReadKey();
+                    while (run)
+                    {
+                       string result = reader.ReadString();
+                        Console.WriteLine(result);
+                        Console.Write("Please enter a command: ");
+                        if (result.Contains("close"))
+                        {
+                            run = false;
+                            Console.WriteLine("close connection");
+                            ts.Cancel();
+                        }
+                    }
                 }
-                client.Close();
+                writer.Write("close me");
+                writer.Flush();
+                Console.ReadKey();
             }
+            
+            client.Close();
         }
     }
 }
@@ -139,3 +149,5 @@ namespace Client
         }
     }
 }*/
+
+ 

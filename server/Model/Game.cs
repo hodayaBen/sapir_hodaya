@@ -43,7 +43,7 @@ namespace server.Model
         {
             if (client1.Equals(client))
             {
-                return client2;
+               return client2;
             }
             return client1;
         }

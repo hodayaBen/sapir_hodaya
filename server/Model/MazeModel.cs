@@ -4,6 +4,7 @@ using MazeGeneratorLib;
 using MazeLib;
 using System.Net.Sockets;
 using SearchAlgorithmsLib;
+using System;
 namespace server.Model
 {
     // public delegate void answer(int id, string msg);
@@ -119,6 +120,7 @@ namespace server.Model
             if (games.TryGetValue(name, out g))
             {
                 g.AddClient(client);
+                Console.WriteLine("check" + g.ToJSON());
                 controller.SendToClient(g.GetSecondPlayer(client), g.ToJSON());
                 return g;
             }
