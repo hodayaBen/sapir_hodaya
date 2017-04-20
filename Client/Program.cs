@@ -18,15 +18,16 @@ namespace Client
             var ts = new CancellationTokenSource();
             CancellationToken ct = ts.Token;
             Console.WriteLine("You are connected");
-            using (NetworkStream stream = client.GetStream())
-            using (BinaryReader reader = new BinaryReader(stream))
-            using (BinaryWriter writer = new BinaryWriter(stream))
+            NetworkStream stream = client.GetStream();
+            BinaryReader reader = new BinaryReader(stream);
+            BinaryWriter writer = new BinaryWriter(stream);
             {
                 Console.Write("Please enter a command: ");
                 string command = Console.ReadLine();
                 if (command.StartsWith("generate") || command.StartsWith("solve"))
                 {
                     writer.Write(command);
+                    writer.Flush();
                     // Get result from server
                     string result = reader.ReadString();
                     Console.WriteLine("Result = {0}", result);

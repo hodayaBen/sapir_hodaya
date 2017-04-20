@@ -2,7 +2,7 @@
 //tcplistener
 using System.Net.Sockets;
 using System.IO;
-
+using System;
 namespace server.View
 
 {
@@ -10,14 +10,17 @@ namespace server.View
     {
         public void HandleClient(TcpClient client, Controller.Controller controller)
         {
+            Console.WriteLine("handle");
             new Task(() =>
             {
-                using (NetworkStream stream = client.GetStream())
-                using (StreamReader reader = new StreamReader(stream))
-                using (StreamWriter writer = new StreamWriter(stream))
+                NetworkStream stream = client.GetStream();
+                BinaryReader reader = new BinaryReader(stream);
+                BinaryWriter writer = new BinaryWriter(stream);
                 {
-                    string commandLine = reader.ReadLine();
-                    // Console.WriteLine("Got command: {0}", commandLine);
+                    
+                    string commandLine = reader.ReadString();
+                   
+                    Console.WriteLine("Got command: {0}", commandLine);
                     string result = controller.ExecuteCommand(commandLine, client);
                     writer.Write(result);
                 }

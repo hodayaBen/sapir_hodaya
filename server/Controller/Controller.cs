@@ -31,6 +31,7 @@ namespace server.Controller
         {
             string[] arr = commandLine.Split(' ');
             string commandKey = arr[0];
+            Console.WriteLine("controller:"+commandKey);
             if (!commands.ContainsKey(commandKey))
                 return "Command not found";
             string[] args = arr.Skip(1).ToArray();

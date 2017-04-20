@@ -48,6 +48,7 @@ namespace server.Model
             {
                 IMazeGenerator mg = new DFSMazeGenerator();
                 m = mg.Generate(rows, cols);
+                m.Name = name;
                 return m;
             }
         }

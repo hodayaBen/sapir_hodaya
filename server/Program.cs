@@ -18,7 +18,8 @@ namespace server
             //public Server(int port, IClientHandler ch, Controller.Controller con)
             Server s = new Server(8000, handCliemt,controller);
             s.Start();
-            Console.ReadKey();
+            Console.Write("over");
+           Console.ReadKey();
         }
     }
 }

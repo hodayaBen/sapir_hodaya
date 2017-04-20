@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 //ipendpoint
 using System.Net;
-
+using System.IO;
 namespace server.View
 {
     class Server
@@ -39,7 +39,8 @@ namespace server.View
                         TcpClient client = listener.AcceptTcpClient();
                         Console.WriteLine("Got new connection");
                         //perform the task
-                        ch.HandleClient(client, this.controller);
+                        
+                       ch.HandleClient(client, this.controller);
                     }
                     catch (SocketException)
                     {
