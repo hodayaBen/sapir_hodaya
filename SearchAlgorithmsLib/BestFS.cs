@@ -32,7 +32,8 @@ namespace SearchAlgorithmsLib
         {
             Console.WriteLine(searchable.getInitialState().state.ToString());
             Console.WriteLine(searchable.getGoalState().state.ToString());
-            SolutionDetails<Direction> s = new SolutionDetails<Direction>();
+            Solution<Direction> s = new Solution<Direction>();
+           
             State<Position> n = new State<Position>(searchable.getInitialState().state);
             n.cost = 0;
             n.cameFrom = null;
@@ -40,7 +41,9 @@ namespace SearchAlgorithmsLib
             HashSet<State<Position>> closed = new HashSet<State<Position>>();
             while (OpenListSize() > 0)
             {
+               
                 n = this.openList.Pop();
+                this.evaluatedNodes += 1;
                 closed.Add(n);
                 if (n.state.Equals(searchable.getGoalState().state))
                 {
@@ -49,10 +52,6 @@ namespace SearchAlgorithmsLib
                     while (n != null)
                     {
                         stack.Push(n);
-                        s.NodesEvaluated += 1;
-
-                        //s.addNode(n);
-                        //Console.WriteLine(n.state.ToString());
                         n = n.cameFrom;
                     }
                     n = stack.Pop();
@@ -106,7 +105,8 @@ namespace SearchAlgorithmsLib
                     }
                 }
             }
-            return s;
+            SolutionDetails<Direction> solv = new SolutionDetails<Direction>(s,this.getNumberOfNodesEvaluated());
+            return solv;
         }
     }
 }

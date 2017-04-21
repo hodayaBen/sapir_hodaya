@@ -17,7 +17,8 @@ namespace SearchAlgorithmsLib
         }
         public override SolutionDetails<Direction> search(ISearchable<Position> searchable)
         {
-            SolutionDetails<Direction> solv = new SolutionDetails<Direction>();
+           
+            Solution<Direction> solv = new Solution<Direction>();
             // int numberOfNodeVisited = 0;
             //Solution<Direction> solv = new Solution<Direction>();
             //push to stack the start point in the maze
@@ -30,7 +31,7 @@ namespace SearchAlgorithmsLib
             {
                 //get out the last element in the stack
                 State<Position> s = stack.Pop();
-                solv.NodesEvaluated += 1;
+                this.evaluatedNodes += 1;
 
                 grayList.Add(s.state.ToString().GetHashCode(), s);
                 if (s.Equals(searchable.getGoalState()))
@@ -74,7 +75,7 @@ namespace SearchAlgorithmsLib
                         }
                     }
 
-                    return solv;
+                    return  new SolutionDetails<Direction>(solv,this.getNumberOfNodesEvaluated()); 
 
                 }
                 List<State<Position>> l = searchable.getAllPossibleStates(s);
@@ -89,7 +90,7 @@ namespace SearchAlgorithmsLib
                 }
                 BlackList.Add(s.state.ToString().GetHashCode(), s);
             }
-            return solv;
+            return new SolutionDetails<Direction>(solv, this.getNumberOfNodesEvaluated());
         }
     }
 }

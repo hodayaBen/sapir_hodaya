@@ -1,13 +1,13 @@
 ﻿
 namespace SearchAlgorithmsLib
 {
-    public class SolutionDetails<T> : Solution<T>
+    public class SolutionDetails<T> 
     {
         public int NodesEvaluated { get; set; }
-
-        public SolutionDetails(): base()
+       public  Solution<T> solv { get; }
+        public SolutionDetails(Solution<T>s,int numberOfNode)
         {
-            
+            this.solv = s;
             this.NodesEvaluated = 0;
         }
       

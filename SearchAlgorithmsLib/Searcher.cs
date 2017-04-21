@@ -10,7 +10,7 @@ namespace SearchAlgorithmsLib
     public abstract class Searcher<T,S> : ISearcher<T,S>
     {
         protected MyQueue<State<T>> openList;
-        protected int evaluatedNodes;
+       public int evaluatedNodes { get; set; }
         public int getNumberOfNodesEvaluated()
         {
             return evaluatedNodes;

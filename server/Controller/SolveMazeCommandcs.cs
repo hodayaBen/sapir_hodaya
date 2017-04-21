@@ -21,7 +21,7 @@ namespace server.Controller
             string name = args[0];
             int algo = int.Parse(args[1]);
             SolutionDetails<Direction> sol = model.SolveMaze(name, algo);
-            PasrseSolve p = new PasrseSolve(name, sol.getSolve(), sol.NodesEvaluated);
+            PasrseSolve p = new PasrseSolve(name,sol.solv.getSolve(), sol.NodesEvaluated);
             Console.WriteLine(JsonConvert.SerializeObject(p));
             return JsonConvert.SerializeObject(p);
 
