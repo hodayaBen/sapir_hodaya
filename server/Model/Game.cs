@@ -9,8 +9,6 @@ namespace server.Model
     {
         Maze myMaze;
         public int numOfClient { get; set; }
-        //TcpClient client1;
-        //TcpClient client2;
         ICClientHandler client1;
         ICClientHandler client2;
 

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
+    /// <summary>
+    /// algohrithms dfs
+    /// </summary>
     public class DFS : Searcher<Position, Direction>
     {
         private Stack<State<Position>> reverseStack;
@@ -15,17 +18,17 @@ namespace SearchAlgorithmsLib
             reverseStack = new Stack<State<Position>>();
             stack = new Stack<State<Position>>();
         }
+        //return solution detail to maze
         public override SolutionDetails<Direction> search(ISearchable<Position> searchable)
         {
            
             Solution<Direction> solv = new Solution<Direction>();
-            // int numberOfNodeVisited = 0;
-            //Solution<Direction> solv = new Solution<Direction>();
-            //push to stack the start point in the maze
             State<Position> n = searchable.getInitialState();
-            // State<Position> n = new State<Position>(searchable.getInitialState().state);
+            //push the sirst element
             stack.Push(n);
+            //if visit in this node
             Dictionary<int, State<Position>> grayList = new Dictionary<int, State<Position>>();
+            //if over to check  the node and his boys
             Dictionary<int, State<Position>> BlackList = new Dictionary<int, State<Position>>();
             while (stack.Count > 0)
             {
@@ -36,48 +39,10 @@ namespace SearchAlgorithmsLib
                 grayList.Add(s.state.ToString().GetHashCode(), s);
                 if (s.Equals(searchable.getGoalState()))
                 {
-                    reverseStack.Push(s);
-                    while (s.cameFrom != null)
-                    {
-
-                        reverseStack.Push(s.cameFrom);
-                        s = s.cameFrom;
-                    }
-                    while (reverseStack.Count > 0)
-                    {
-                        State<Position> val = reverseStack.Pop();
-                        State<Position> prev = val.cameFrom;
-                        if (prev != null)
-                        {
-                            int difRow = prev.state.Row - val.state.Row;
-                            if (difRow == -1)
-                            {
-                                solv.addNode(Direction.Down);
-                            }
-                            else if (difRow == 1)
-                            {
-                                solv.addNode(Direction.Up);
-                            }
-                            else
-                            {
-                                int difCol = prev.state.Col - n.state.Col;
-                                if (difCol == -1)
-                                {
-                                    solv.addNode(Direction.Right);
-                                }
-                                else
-                                {
-                                    solv.addNode(Direction.Left);
-                                }
-
-                            }
-
-                        }
-                    }
-
-                    return  new SolutionDetails<Direction>(solv,this.getNumberOfNodesEvaluated()); 
-
+                    ConvertToDirection(n, solv);
+                    break;
                 }
+              
                 List<State<Position>> l = searchable.getAllPossibleStates(s);
                 foreach (State<Position> neg in l)
                 {
@@ -90,7 +55,8 @@ namespace SearchAlgorithmsLib
                 }
                 BlackList.Add(s.state.ToString().GetHashCode(), s);
             }
-            return new SolutionDetails<Direction>(solv, this.getNumberOfNodesEvaluated());
+            //the solution detail
+            return new SolutionDetails<Direction>(solv, this.evaluatedNodes);
         }
     }
 }

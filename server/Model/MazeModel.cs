@@ -8,43 +8,48 @@ using System;
 using server.Controller;
 namespace server.Model
 {
-    // public delegate void answer(int id, string msg);
+   
     /// <summary>
     /// the model of the project that has all the main class we want to acess
     /// </summary>
     public class MazeModel : IModel
     {
-
+        //contains
         public Dictionary<string, Game> games { get; set; }
-        //public Dictionary<TcpClient, string> clientInGames { get; set; }
+        //contain value  ICClientHandler-class that manage connection with one client
+        // according name of maze
         public Dictionary<ICClientHandler, string> clientInGames { get; set; }
+        //contains value maze acorrding key name of maze
         public Dictionary<string, Maze> Mazes { get; set; }
         public Dictionary<string, SolutionDetails<Direction>> Sol { get; set; }
         public Controller.Controller controller { get; set; }
         const int BFS = 0;
         const int DFS1 = 1;
         /// <summary>
-        /// constructor
+        /// 
         /// </summary>
-        /// <param name="h">height </param>
-        /// <param name="w">width</param>
+        /// <param name="conr">recive controller </param>
 
         public MazeModel(Controller.Controller conr)
         {
             Mazes = new Dictionary<string, Maze>();
             games = new Dictionary<string, Game>();
             Sol = new Dictionary<string, SolutionDetails<Direction>>();
-            //clientInGames = new Dictionary<TcpClient, string>();
             clientInGames = new Dictionary<ICClientHandler, string>();
             controller = conr;
         }
-
+        /// <summary>
+        /// commit task 1
+        /// </summary>
+        /// <param name="name">name maze</param>
+        /// <param name="rows">row maze</param>
+        /// <param name="cols">col maze</param>
+        /// <returns></returns>
         public Maze GenerateMaze(string name, int rows, int cols)
         {
             Maze m;
             if (Mazes.ContainsKey(name))
-            {
-                //print error 
+            { 
                 return null;
 
             }

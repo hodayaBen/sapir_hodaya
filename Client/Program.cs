@@ -14,8 +14,10 @@ namespace Client
     {
         static void Main(string[] args)
         {
+
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), Int32.Parse(ConfigurationManager.AppSettings["Port"]));
             TcpClient client = new TcpClient();
+            //conect server
             client.Connect(ep);
             bool run = true;
             Task t2;
@@ -42,7 +44,7 @@ namespace Client
                 else
                 {
                     //open the conection to many message transpatent
-                    //open a task that will wait for message from the console
+                    //open a task that will wait for message from the console and sent it to server
                     //run until we got "close" from the server, and then we will cancale it
                     t2 = new Task(() =>
                     {
@@ -58,6 +60,7 @@ namespace Client
                         }
                     }, ct);
                     t2.Start();
+                    //recive massage from server if accept close 'close the server
                     while (run)
                     {
                         string result = reader.ReadString();
@@ -86,19 +89,3 @@ namespace Client
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,9 +8,7 @@ namespace SearchAlgorithmsLib
 {
     public class State<T> : ICostable
     {
-        //private T state;
-        //private double cost;
-        //private State<T> cameFrom;
+       
 
         public T state
         {

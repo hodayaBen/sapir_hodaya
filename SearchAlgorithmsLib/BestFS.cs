@@ -30,10 +30,8 @@ namespace SearchAlgorithmsLib
         /// <returns>shorted way fron start to end of maze</returns>
         public override SolutionDetails<Direction> search(ISearchable<Position> searchable)
         {
-            Console.WriteLine(searchable.getInitialState().state.ToString());
-            Console.WriteLine(searchable.getGoalState().state.ToString());
             Solution<Direction> s = new Solution<Direction>();
-           
+
             State<Position> n = new State<Position>(searchable.getInitialState().state);
             n.cost = 0;
             n.cameFrom = null;
@@ -41,63 +39,30 @@ namespace SearchAlgorithmsLib
             HashSet<State<Position>> closed = new HashSet<State<Position>>();
             while (OpenListSize() > 0)
             {
-               
                 n = this.openList.Pop();
                 this.evaluatedNodes += 1;
                 closed.Add(n);
+                //if arrive to end convert to the solution
                 if (n.state.Equals(searchable.getGoalState().state))
                 {
-                    State<Position> pre;
-                    Stack<State<Position>> stack = new Stack<State<Position>>();
-                    while (n != null)
-                    {
-                        stack.Push(n);
-                        n = n.cameFrom;
-                    }
-                    n = stack.Pop();
-                    while (stack.Count != 0)
-                    {
-                        pre = n;
-                        n = stack.Pop();
-                        int dif = pre.state.Row - n.state.Row;
-                        if (dif == -1)
-                        {
-                            s.addNode(Direction.Down);
-                        }
-                        else if (dif == 1)
-                        {
-                            s.addNode(Direction.Up);
-                        }
-                        else
-                        {
-                            dif = pre.state.Col - n.state.Col;
-                            if (dif == -1)
-                            {
-                                s.addNode(Direction.Right);
-                            }
-                            else if (dif == 1)
-                            {
-                                s.addNode(Direction.Left);
-                            }
-                        }
-                    }
+                    ConvertToDirection(n, s);
                     break;
                 }
                 List<State<Position>> l = searchable.getAllPossibleStates(n);
                 foreach (var x in l)
                 {
-                    Console.WriteLine(x.state.ToString());
+
                     if ((!(closed.Contains(x)))
                        && !(openList.Contains(x)))
                     {
-                        this.evaluatedNodes++;
+
                         x.cost = n.cost + 1;
                         x.cameFrom = n;
                         openList.Add(x);
                     }
                     else if ((!(closed.Contains(x))) && (x.cost > n.cost + 1))
-                    {
-                        Console.WriteLine(x.state.ToString() + " " + x.cost);
+                    {//
+
                         x.cost = n.cost + 1;
                         x.cameFrom = n;
                         openList.remove(x);
@@ -105,7 +70,7 @@ namespace SearchAlgorithmsLib
                     }
                 }
             }
-            SolutionDetails<Direction> solv = new SolutionDetails<Direction>(s,this.getNumberOfNodesEvaluated());
+            SolutionDetails<Direction> solv = new SolutionDetails<Direction>(s, this.evaluatedNodes);
             return solv;
         }
     }

@@ -39,7 +39,7 @@ namespace SearchAlgorithmsLib
         {
             this.solve.Add(node);
         }
-        
+        //convert the solution to string
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

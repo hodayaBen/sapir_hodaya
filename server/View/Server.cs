@@ -8,7 +8,7 @@ using System.IO;
 namespace server.View
 {
     /// <summary>
-    /// TCP Server that Handles Multiple Clients
+    /// server that can communicate wuth mu
     /// </summary>
     class Server
     {

@@ -5,6 +5,9 @@ using SearchAlgorithmsLib;
 using server.Controller;
 namespace server.Model
 {
+    /// <summary>
+    /// interface that Defines the function of model
+    /// </summary>
     public interface IModel
     {
 
@@ -13,9 +16,6 @@ namespace server.Model
         //string StartGame(string name, int rows, int cols, TcpClient client);
         string StartGame(string name, int rows, int cols, ICClientHandler client);
         String list();
-        // Game JoinGame(string name, TcpClient client);
-        //string Play(string move, TcpClient client);
-        //string Close(string name, TcpClient client);
         Game JoinGame(string name, ICClientHandler client);
         string Play(string move, ICClientHandler client);
         string Close(string name, ICClientHandler client);

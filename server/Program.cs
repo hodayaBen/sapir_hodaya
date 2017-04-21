@@ -19,7 +19,7 @@ namespace server
             //public Server(int port, IClientHandler ch, Controller.Controller con)
             Server s = new Server(8000,controller);
             s.Start();
-            Console.Write("over");
+            //Console.Write("over");
            Console.ReadKey();
         }
     }
