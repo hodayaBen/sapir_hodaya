@@ -7,6 +7,9 @@ using System.Net;
 using System.IO;
 namespace server.View
 {
+    /// <summary>
+    /// TCP Server that Handles Multiple Clients
+    /// </summary>
     class Server
     {
         //port the server listen
