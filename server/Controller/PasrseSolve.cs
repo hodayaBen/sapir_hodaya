@@ -8,12 +8,12 @@ using MazeLib;
 using Newtonsoft.Json;
 namespace server.Controller
 {
-   public class PasrseSolve
+    public class PasrseSolve
     {
         public string name;
         public int nodesEvaluated;
         public string solution;
-        public PasrseSolve(string name, List<Direction> solv,int numOfNode)
+        public PasrseSolve(string name, List<Direction> solv, int numOfNode)
         {
             this.name = name;
             this.solution = PasrseSolve.ParseSol(solv);
@@ -21,24 +21,24 @@ namespace server.Controller
         }
         static string ParseSol(List<Direction> solv)
         {
-            string str = "";
+            StringBuilder str = new StringBuilder();
             Direction s;
-            
-                for (int i = 0; i <solv.Count(); i++)
+
+            for (int i = 0; i < solv.Count(); i++)
             {
                 s = solv[i];
-                Console.WriteLine("c1"+s.ToString());
+                Console.WriteLine("c1" + s.ToString());
                 if (s.ToString().Equals("Right"))
-                    str += "1";
+                    str.Append("1");
                 else if (s.ToString().Equals("Up"))
-                    str += "2";
+                    str.Append("2");
                 else if (s.ToString().Equals("Down"))
-                    str += "3";
+                    str.Append("3");
                 else
-                    str += "0";
+                    str.Append("0");
             }
 
-            return str;
+            return str.ToString();
         }
 
     }

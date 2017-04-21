@@ -16,16 +16,15 @@ namespace server.Controller
             this.model = model;
         }
         //public string Execute(string[] args, TcpClient client)
-        public string Execute(string[] args, IClientHandler client)
+        public string Execute(string[] args, ICClientHandler client)
         {
             string name = args[0];
             int algo = int.Parse(args[1]);
-            SolutionDetails<Direction> sol= model.SolveMaze(name, algo);
-            int num = sol.NodesEvaluated;
-            PasrseSolve p = new PasrseSolve(name, sol.getSolve(),num);
+            SolutionDetails<Direction> sol = model.SolveMaze(name, algo);
+            PasrseSolve p = new PasrseSolve(name, sol.getSolve(), sol.NodesEvaluated);
             Console.WriteLine(JsonConvert.SerializeObject(p));
             return JsonConvert.SerializeObject(p);
-           
+
         }
     }
 }

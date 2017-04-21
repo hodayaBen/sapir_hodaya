@@ -52,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CClientHandler.cs" />
     <Compile Include="Controller\CloseCommand.cs" />
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\GenerateMazeCommand.cs" />
+    <Compile Include="Controller\ICClientHandler.cs" />
     <Compile Include="Controller\ICommand.cs" />
     <Compile Include="Controller\JoinCommand.cs" />
     <Compile Include="Controller\ListCommand.cs" />
@@ -69,7 +71,6 @@
     <Compile Include="Model\SearchableMaze .cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\ClientSendMessage.cs" />
     <Compile Include="View\Server.cs" />
     <Compile Include="View\ClientHandle.cs" />
     <Compile Include="View\IClientHandler.cs" />

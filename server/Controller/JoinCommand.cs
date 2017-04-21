@@ -3,6 +3,9 @@ using server.Model;
 using server.View;
 namespace server.Controller
 {
+    /// <summary>
+    /// add a client to game
+    /// </summary>
     public class JoinCommand : ICommand
     {
         private IModel model;
@@ -11,11 +14,18 @@ namespace server.Controller
             this.model = model;
         }
         // public string Execute(string[] args, TcpClient client)
-        public string Execute(string[] args, IClientHandler client)
+        public string Execute(string[] args, ICClientHandler client)
         {
             string name = args[0];
             Game g = model.JoinGame(name, client);
-            return g.ToJSON();
+            if (g != null)
+            {
+                return g.ToJSON();
+            }
+            else
+            {
+                return "no such available game";
+            }
         }
     }
 }

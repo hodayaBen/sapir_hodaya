@@ -28,11 +28,11 @@ namespace server.Controller
 
 
         //public string ExecuteCommand(string commandLine, TcpClient client)
-        public string ExecuteCommand(string commandLine, IClientHandler client)
+        public string ExecuteCommand(string commandLine, ICClientHandler client)
         {
             string[] arr = commandLine.Split(' ');
             string commandKey = arr[0];
-            Console.WriteLine("controller:"+commandKey);
+            Console.WriteLine("controller:" + commandKey);
             if (!commands.ContainsKey(commandKey))
                 return "Command not found";
             string[] args = arr.Skip(1).ToArray();
@@ -43,9 +43,9 @@ namespace server.Controller
         //{
         //sender.SendToClient(client, msg);
         //}
-        public void SendToClient(IClientHandler client, string msg)
+        public void SendToClient(ICClientHandler client, string msg)
         {
-                client.sendMssage(msg);
+            client.sendMssage(msg);
         }
     }
 

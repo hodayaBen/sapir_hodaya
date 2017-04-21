@@ -8,6 +8,6 @@ namespace server.Controller
     interface ICommand
     {
         //string Execute(string[] args, TcpClient client = null);
-        string Execute(string[] args, IClientHandler client = null);
+        string Execute(string[] args, ICClientHandler client = null);
     }
 }

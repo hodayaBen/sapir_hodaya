@@ -5,7 +5,7 @@ using MazeLib;
 using System.Net.Sockets;
 using SearchAlgorithmsLib;
 using System;
-using server.View;
+using server.Controller;
 namespace server.Model
 {
     // public delegate void answer(int id, string msg);
@@ -17,7 +17,7 @@ namespace server.Model
 
         public Dictionary<string, Game> games { get; set; }
         //public Dictionary<TcpClient, string> clientInGames { get; set; }
-        public Dictionary<IClientHandler, string> clientInGames { get; set; }
+        public Dictionary<ICClientHandler, string> clientInGames { get; set; }
         public Dictionary<string, Maze> Mazes { get; set; }
         public Dictionary<string, SolutionDetails<Direction>> Sol { get; set; }
         public Controller.Controller controller { get; set; }
@@ -35,7 +35,7 @@ namespace server.Model
             games = new Dictionary<string, Game>();
             Sol = new Dictionary<string, SolutionDetails<Direction>>();
             //clientInGames = new Dictionary<TcpClient, string>();
-            clientInGames = new Dictionary<IClientHandler, string>();
+            clientInGames = new Dictionary<ICClientHandler, string>();
             controller = conr;
         }
 
@@ -88,7 +88,7 @@ namespace server.Model
         }
 
         //public string StartGame(string name, int rows, int cols, TcpClient client)
-        public string StartGame(string name, int rows, int cols, IClientHandler client)
+        public string StartGame(string name, int rows, int cols, ICClientHandler client)
         {
             if (games.ContainsKey(name))
             {
@@ -120,16 +120,23 @@ namespace server.Model
         }
 
         //public Game JoinGame(string name, TcpClient client)
-        public Game JoinGame(string name, IClientHandler client)
+        public Game JoinGame(string name, ICClientHandler client)
         {
             Game g;
             if (games.TryGetValue(name, out g))
             {
-                g.AddClient(client);
-                this.clientInGames.Add(client, name);
-                Console.WriteLine("check" + g.ToJSON());
-                controller.SendToClient(g.GetSecondPlayer(client), g.ToJSON());
-                return g;
+                if (g.numOfClient == 1)
+                {
+                    g.AddClient(client);
+                    this.clientInGames.Add(client, name);
+                    //   Console.WriteLine("check" + g.ToJSON());
+                    controller.SendToClient(g.GetSecondPlayer(client), g.ToJSON());
+                    return g;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
@@ -138,7 +145,7 @@ namespace server.Model
         }
 
         //public string Play(string move, TcpClient client)
-        public string Play(string move, IClientHandler client)
+        public string Play(string move, ICClientHandler client)
         {
             string name;
             Game g;
@@ -148,20 +155,26 @@ namespace server.Model
                 {
                     string s = g.Play(move, client);
                     controller.SendToClient(g.GetSecondPlayer(client), s);
-                    return s;
+                    return "got your move, and sent it to the second client";
                 }
             }
             return "the game not found";
         }
 
         //public string Close(string name, TcpClient client)
-        public string Close(string name, IClientHandler client)
+        public string Close(string name, ICClientHandler client)
         {
             Game g;
+            ICClientHandler secondClient = null;
             if (games.TryGetValue(name, out g))
             {
-                controller.SendToClient(g.GetSecondPlayer(client), "close");
+                secondClient = g.GetSecondPlayer(client);
+                controller.SendToClient(secondClient, "close");
             }
+            //update the DB
+            this.games.Remove(name);
+            this.clientInGames.Remove(client);
+            this.clientInGames.Remove(secondClient);
             return "close";
         }
     }

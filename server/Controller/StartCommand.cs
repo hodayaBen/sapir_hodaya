@@ -11,7 +11,7 @@ namespace server.Controller
             this.model = model;
         }
         //public string Execute(string[] args, TcpClient client)
-        public string Execute(string[] args, IClientHandler client)
+        public string Execute(string[] args, ICClientHandler client)
         {
             string name = args[0];
             int rows = int.Parse(args[1]);

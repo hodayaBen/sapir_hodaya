@@ -2,7 +2,7 @@
 using MazeLib;
 using MazeGeneratorLib;
 using System.Net.Sockets;
-using server.View;
+using server.Controller;
 namespace server.Model
 {
     public class Game
@@ -11,8 +11,8 @@ namespace server.Model
         public int numOfClient { get; set; }
         //TcpClient client1;
         //TcpClient client2;
-        IClientHandler client1;
-        IClientHandler client2;
+        ICClientHandler client1;
+        ICClientHandler client2;
 
         public Game(string name, int row, int col)
         {
@@ -21,7 +21,7 @@ namespace server.Model
             myMaze.Name = name;
         }
         //public void AddClient(TcpClient c)
-        public void AddClient(IClientHandler c)
+        public void AddClient(ICClientHandler c)
         {
             if (numOfClient == 0)
             {
@@ -43,16 +43,16 @@ namespace server.Model
             return myMaze.ToJSON();
         }
         //public TcpClient GetSecondPlayer(TcpClient client)
-        public IClientHandler GetSecondPlayer(IClientHandler client)
+        public ICClientHandler GetSecondPlayer(ICClientHandler client)
         {
             if (client1.Equals(client))
             {
-               return client2;
+                return client2;
             }
             return client1;
         }
         //public string Play(string move, TcpClient client)
-        public string Play(string move, IClientHandler client)
+        public string Play(string move, ICClientHandler client)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("{\n");
