@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using server.Model;
+using server.View;
 namespace server.Controller
 {
     public class ListCommand : ICommand
@@ -10,7 +11,8 @@ namespace server.Controller
         {
             this.model = model;
         }
-        public string Execute(string[] args, TcpClient client)
+        //public string Execute(string[] args, TcpClient client)
+            public string Execute(string[] args, IClientHandler client)
         {
             String ans = model.list();
             return ans;

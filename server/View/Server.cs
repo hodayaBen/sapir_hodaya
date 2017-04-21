@@ -15,12 +15,19 @@ namespace server.View
         private TcpListener listener;
         private IClientHandler ch;
         private Controller.Controller controller;
-        public Server(int port, IClientHandler ch, Controller.Controller con)
+//        public Server(int port, IClientHandler ch, Controller.Controller con)
+//        {
+//            this.controller = con;
+ //           this.port = port;
+ //           this.ch = ch;
+ //       }
+        public Server(int port, Controller.Controller con)
         {
             this.controller = con;
             this.port = port;
-            this.ch = ch;
+            
         }
+
         public void Start()
         {
             //create socket to server
@@ -39,7 +46,7 @@ namespace server.View
                         TcpClient client = listener.AcceptTcpClient();
                         Console.WriteLine("Got new connection");
                         //perform the task
-                        
+                        this.ch = new ClientHandler(client);
                        ch.HandleClient(client, this.controller);
                     }
                     catch (SocketException)

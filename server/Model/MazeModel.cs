@@ -5,6 +5,7 @@ using MazeLib;
 using System.Net.Sockets;
 using SearchAlgorithmsLib;
 using System;
+using server.View;
 namespace server.Model
 {
     // public delegate void answer(int id, string msg);
@@ -15,9 +16,10 @@ namespace server.Model
     {
 
         public Dictionary<string, Game> games { get; set; }
-        public Dictionary<TcpClient, string> clientInGames { get; set; }
+        //public Dictionary<TcpClient, string> clientInGames { get; set; }
+        public Dictionary<IClientHandler, string> clientInGames { get; set; }
         public Dictionary<string, Maze> Mazes { get; set; }
-        public Dictionary<string, Solution<Direction>> Sol { get; set; }
+        public Dictionary<string, SolutionDetails<Direction>> Sol { get; set; }
         public Controller.Controller controller { get; set; }
         const int BFS = 0;
         const int DFS1 = 1;
@@ -31,8 +33,9 @@ namespace server.Model
         {
             Mazes = new Dictionary<string, Maze>();
             games = new Dictionary<string, Game>();
-            Sol = new Dictionary<string, Solution<Direction>>();
-            clientInGames = new Dictionary<TcpClient, string>();
+            Sol = new Dictionary<string, SolutionDetails<Direction>>();
+            //clientInGames = new Dictionary<TcpClient, string>();
+            clientInGames = new Dictionary<IClientHandler, string>();
             controller = conr;
         }
 
@@ -55,9 +58,9 @@ namespace server.Model
             }
         }
 
-        public Solution<Direction> SolveMaze(string name, int algo)
+        public SolutionDetails<Direction> SolveMaze(string name, int algo)
         {
-            Solution<Direction> sol_det;
+            SolutionDetails<Direction> sol_det;
             Searcher<Position, Direction> s;
             if (Sol.TryGetValue(name, out sol_det))
             {
@@ -78,13 +81,14 @@ namespace server.Model
                 s = new DFS();
             }
 
-            sol_det = new SolutionDetails<Direction>(s.search(new SearchableMaze(maze)), s.getNumberOfNodesEvaluated());
-
+            sol_det = s.search(new SearchableMaze(maze));
+            //sol_det = new SolutionDetails<Direction>(s.search(new SearchableMaze(maze)), s.getNumberOfNodesEvaluated());
             Sol.Add(name, sol_det);
             return sol_det;
         }
 
-        public string StartGame(string name, int rows, int cols, TcpClient client)
+        //public string StartGame(string name, int rows, int cols, TcpClient client)
+        public string StartGame(string name, int rows, int cols, IClientHandler client)
         {
             if (games.ContainsKey(name))
             {
@@ -94,6 +98,7 @@ namespace server.Model
             {
                 Game g = new Game(name, rows, cols);
                 g.AddClient(client);
+                clientInGames.Add(client, name);
                 this.games.Add(name, g);
                 return "wait for the second player";
             }
@@ -114,12 +119,14 @@ namespace server.Model
             return sb.ToString();
         }
 
-        public Game JoinGame(string name, TcpClient client)
+        //public Game JoinGame(string name, TcpClient client)
+        public Game JoinGame(string name, IClientHandler client)
         {
             Game g;
             if (games.TryGetValue(name, out g))
             {
                 g.AddClient(client);
+                this.clientInGames.Add(client, name);
                 Console.WriteLine("check" + g.ToJSON());
                 controller.SendToClient(g.GetSecondPlayer(client), g.ToJSON());
                 return g;
@@ -130,7 +137,8 @@ namespace server.Model
             }
         }
 
-        public string Play(string move, TcpClient client)
+        //public string Play(string move, TcpClient client)
+        public string Play(string move, IClientHandler client)
         {
             string name;
             Game g;
@@ -146,7 +154,8 @@ namespace server.Model
             return "the game not found";
         }
 
-        public string Close(string name, TcpClient client)
+        //public string Close(string name, TcpClient client)
+        public string Close(string name, IClientHandler client)
         {
             Game g;
             if (games.TryGetValue(name, out g))

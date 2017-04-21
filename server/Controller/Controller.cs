@@ -11,7 +11,7 @@ namespace server.Controller
     {
         private Dictionary<string, ICommand> commands;
         private IModel model;
-        private ClientSendMessage sender;
+        //private ClientSendMessage sender;
         public Controller()
         {
             model = new MazeModel(this);
@@ -23,11 +23,12 @@ namespace server.Controller
             commands.Add("join", new JoinCommand(model));
             commands.Add("play", new PlayCommand(model));
             commands.Add("close", new CloseCommand(model));
-            sender = new ClientSendMessage();
+            //sender = new ClientSendMessage();
         }
 
 
-        public string ExecuteCommand(string commandLine, TcpClient client)
+        //public string ExecuteCommand(string commandLine, TcpClient client)
+        public string ExecuteCommand(string commandLine, IClientHandler client)
         {
             string[] arr = commandLine.Split(' ');
             string commandKey = arr[0];
@@ -38,9 +39,13 @@ namespace server.Controller
             ICommand command = commands[commandKey];
             return command.Execute(args, client);
         }
-        public void SendToClient(TcpClient client, string msg)
+        //public void SendToClient(TcpClient client, string msg)
+        //{
+        //sender.SendToClient(client, msg);
+        //}
+        public void SendToClient(IClientHandler client, string msg)
         {
-            sender.SendToClient(client, msg);
+                client.sendMssage(msg);
         }
     }
 

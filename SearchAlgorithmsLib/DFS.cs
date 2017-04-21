@@ -15,10 +15,11 @@ namespace SearchAlgorithmsLib
             reverseStack = new Stack<State<Position>>();
             stack = new Stack<State<Position>>();
         }
-        public override Solution<Direction> search(ISearchable<Position> searchable)
+        public override SolutionDetails<Direction> search(ISearchable<Position> searchable)
         {
-
-            Solution<Direction> solv = new Solution<Direction>();
+            SolutionDetails < Direction >solv= new SolutionDetails<Direction>();
+           // int numberOfNodeVisited = 0;
+            //Solution<Direction> solv = new Solution<Direction>();
             //push to stack the start point in the maze
             State<Position> n = searchable.getInitialState();
             // State<Position> n = new State<Position>(searchable.getInitialState().state);
@@ -29,6 +30,8 @@ namespace SearchAlgorithmsLib
             {
                 //get out the last element in the stack
                 State<Position> s = stack.Pop();
+                solv.NodesEvaluated += 1;
+               
                 grayList.Add(s.state.ToString().GetHashCode(), s);
                 if (s.Equals(searchable.getGoalState()))
                 {

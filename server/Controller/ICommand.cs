@@ -1,5 +1,5 @@
 ﻿using System.Net.Sockets;
-
+using server.View;
 namespace server.Controller
 {
     /// <summary>
@@ -7,6 +7,7 @@ namespace server.Controller
     /// </summary>
     interface ICommand
     {
-        string Execute(string[] args, TcpClient client = null);
+        //string Execute(string[] args, TcpClient client = null);
+        string Execute(string[] args, IClientHandler client = null);
     }
 }

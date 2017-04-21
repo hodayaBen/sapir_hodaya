@@ -13,10 +13,11 @@ namespace server
         static void Main(string[] args)
         {
             Controller.Controller controller = new Controller.Controller();
-            IClientHandler handCliemt = new ClientHandler();
-            TcpClient client = new TcpClient();
+            //TcpClient client = new TcpClient();
+            //IClientHandler handCliemt = new ClientHandler(client);
+           
             //public Server(int port, IClientHandler ch, Controller.Controller con)
-            Server s = new Server(8000, handCliemt,controller);
+            Server s = new Server(8000,controller);
             s.Start();
             Console.Write("over");
            Console.ReadKey();

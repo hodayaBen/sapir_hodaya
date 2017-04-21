@@ -10,6 +10,7 @@ using MazeLib;
 using MazeGeneratorLib;
 using System.Net.Sockets;
 using server.Model;
+using server.View;
 namespace server.Controller
 {
     public class PlayCommand : ICommand
@@ -19,7 +20,8 @@ namespace server.Controller
         {
             this.model = model;
         }
-        public string Execute(string[] args, TcpClient client)
+        //public string Execute(string[] args, TcpClient client)
+        public string Execute(string[] args, IClientHandler client)
         {
 
             string move = args[0];

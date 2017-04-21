@@ -28,11 +28,11 @@ namespace SearchAlgorithmsLib
         /// </summary>
         /// <param name="searchable">searchable maze we can check for wanted way</param>
         /// <returns>shorted way fron start to end of maze</returns>
-        public override Solution<Direction> search(ISearchable<Position> searchable)
+        public override SolutionDetails<Direction> search(ISearchable<Position> searchable)
         {
             Console.WriteLine(searchable.getInitialState().state.ToString());
             Console.WriteLine(searchable.getGoalState().state.ToString());
-            Solution<Direction> s = new Solution<Direction>();
+            SolutionDetails<Direction> s = new SolutionDetails<Direction>();
             State<Position> n = new State<Position>(searchable.getInitialState().state);
             n.cost = 0;
             n.cameFrom = null;
@@ -49,6 +49,8 @@ namespace SearchAlgorithmsLib
                     while (n != null)
                     {
                         stack.Push(n);
+                        s.NodesEvaluated += 1;
+
                         //s.addNode(n);
                         //Console.WriteLine(n.state.ToString());
                         n = n.cameFrom;
@@ -89,6 +91,7 @@ namespace SearchAlgorithmsLib
                     if ((!(closed.Contains(x)))
                        && !(openList.Contains(x)))
                     {
+                        this.evaluatedNodes++;
                         x.cost = n.cost + 1;
                         x.cameFrom = n;
                         openList.Add(x);

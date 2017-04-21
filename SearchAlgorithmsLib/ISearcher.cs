@@ -10,7 +10,7 @@ namespace SearchAlgorithmsLib
     public interface ISearcher<T, S>
     {
         // the search method
-        Solution<S> search(ISearchable<T> searchable);
+        SolutionDetails<S>  search(ISearchable<T> searchable);
         // get how many nodes were evaluated by the algorithm
         int getNumberOfNodesEvaluated();
     }

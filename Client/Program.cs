@@ -18,7 +18,7 @@ namespace Client
             TcpClient client = new TcpClient();
             client.Connect(ep);
             bool run = true;
-            Task t1, t2;
+            Task  t2;
             var ts = new CancellationTokenSource();
             CancellationToken ct = ts.Token;
             Console.WriteLine("You are connected");

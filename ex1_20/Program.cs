@@ -12,7 +12,8 @@ namespace ex1_20
     {
         static void Main(string[] args)
         {
-            IMazeGenerator img = new DFSMazeGenerator();
+            //Direction a = 
+          /*  IMazeGenerator img = new DFSMazeGenerator();
             Maze maze = img.Generate(100, 100);
             SearchableMaze sm = new SearchableMaze(maze);
             Console.WriteLine(maze.ToString());
@@ -35,6 +36,11 @@ namespace ex1_20
            // ISearcher<Position,Direction> searcherDFS = new SearchAlgorithmsLib.BestFS<Position,Direction>();
            // searcherDFS.search(sm).getSolve();
           //  Console.WriteLine(searcherDFS.getNumberOfNodesEvaluated());
+
         }
+    }
+}
+*/
+  }
     }
 }

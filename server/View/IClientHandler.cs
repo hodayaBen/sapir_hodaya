@@ -3,8 +3,9 @@ using System.Net.Sockets;
 
 namespace server.View
 {
-    interface IClientHandler
+    public interface IClientHandler
     {
         void HandleClient(TcpClient client, Controller.Controller controller);
+        void sendMssage(string s);
     }
 }
