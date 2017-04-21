@@ -1,0 +1,114 @@
+* commit b7dc099e79345320e5fd78d268e3016eacd47940
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Fri Apr 21 12:56:53 2017 +0300
+| 
+|     all work almost finally
+|     mission 2 became use search evaluate
+| 
+* commit a36914b511a6c52cf6d34e051edcac8afeed019d
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Fri Apr 21 10:42:28 2017 +0300
+| 
+|     over-all work!
+| 
+* commit 16c97dee068b32cb302991d58e6afb40464f7c66
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Fri Apr 21 09:48:39 2017 +0300
+| 
+|     all task  work ,need to over close and decorate clienthandle
+| 
+* commit ef07c21e78646d708f9f3ef511effc601ee0355f
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Thu Apr 20 22:36:25 2017 +0300
+| 
+|     join start
+| 
+* commit f2ee24e4adb3234ae19290335cc86d5c503abac0
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Thu Apr 20 17:42:10 2017 +0300
+| 
+|     start -need to arrange the taske in client
+| 
+* commit 514ebec7125729ed88518e65f6ae07f948749955
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Thu Apr 20 16:41:46 2017 +0300
+| 
+|     solv- work
+| 
+* commit f56dee42b29980db1e12c7f146fba73ac5f91a53
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Thu Apr 20 14:16:20 2017 +0300
+| 
+|     generate over
+| 
+* commit 5178382147773d1482af2baaa95ceab85efba452
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Thu Apr 20 12:21:11 2017 +0300
+| 
+|     server
+| 
+* commit d2864193793f01ef93e27e1a5c48143d2d9e84a0
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Thu Apr 20 11:33:24 2017 +0300
+| 
+|     change mission B
+| 
+* commit 3dfbb7239995951e847d38df582b29f70dd0abdf
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Wed Apr 19 23:02:13 2017 +0300
+| 
+|     project ex1 part 2
+| 
+* commit ce8438ceeaa8f23f899d6c13ffef661d5564b5f5
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Wed Apr 19 14:00:24 2017 +0300
+| 
+|     dfs
+| 
+* commit 6d1f4055c65e3359bf0c055834434bee0f262164
+| Author: gtttttt <sapirmoial@walla.com>
+| Date:   Tue Apr 18 11:07:30 2017 +0300
+| 
+|     new class
+| 
+* commit b21159df71d1573138c8f6d64b749381ddbc0801
+| Author: hodaya <odayaben@gmail.com>
+| Date:   Tue Apr 18 02:46:00 2017 +0300
+| 
+|     bfs, solution
+| 
+* commit dec16aef8ad5472e0a1804fc5c9ab706408419fc
+| Author: hodaya <odayaben@gmail.com>
+| Date:   Tue Apr 18 00:16:39 2017 +0300
+| 
+|     bfs
+| 
+* commit 97802a0050aaa6ad7d41068d0f25bdd95f015c4d
+| Author: hodaya <odayaben@gmail.com>
+| Date:   Sun Apr 16 12:02:47 2017 +0300
+| 
+|     searchable maze
+| 
+* commit b01979f1fdad2d3f631a6a602ceefde48c41d794
+| Author: hodaya <odayaben@gmail.com>
+| Date:   Sun Apr 16 12:01:06 2017 +0300
+| 
+|     cla1
+| 
+* commit 9cf6900a3792e33068ef0c3349f648ef25e02776
+| Author: hodaya <odayaben@gmail.com>
+| Date:   Sun Apr 16 11:33:48 2017 +0300
+| 
+|     bfs
+| 
+* commit 1a0e10e4608050ccfb83588a14543c270fc67408
+| Author: hodaya <hodaya@HODAYA-HP>
+| Date:   Sun Apr 16 11:31:07 2017 +0300
+| 
+|     Add project files.
+| 
+* commit 76b0bc5570cc7ce6a6840bc276ff2ffb093c251f
+  Author: hodaya <hodaya@HODAYA-HP>
+  Date:   Sun Apr 16 11:31:05 2017 +0300
+  
+      Add .gitignore and .gitattributes.

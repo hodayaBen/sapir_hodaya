@@ -9,7 +9,7 @@ namespace server.View
     public interface IClientHandler
     {
         /// <summary>
-        /// 
+        /// wait for message from the client, and send him the model message
         /// </summary>
         /// <param name="client">Tcp client</param>
         /// <param name="controller">controller - to communicate with the model</param>
@@ -17,7 +17,7 @@ namespace server.View
         /// <summary>
         /// send message to the client
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="s">the message</param>
         void sendMssage(string s);
     }
 }

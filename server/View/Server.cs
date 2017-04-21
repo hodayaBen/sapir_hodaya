@@ -15,12 +15,6 @@ namespace server.View
         private TcpListener listener;
         private IClientHandler ch;
         private Controller.Controller controller;
-        //        public Server(int port, IClientHandler ch, Controller.Controller con)
-        //        {
-        //            this.controller = con;
-        //           this.port = port;
-        //           this.ch = ch;
-        //       }
         public Server(int port, Controller.Controller con)
         {
             this.controller = con;

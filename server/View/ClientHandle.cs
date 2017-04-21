@@ -35,13 +35,6 @@ namespace server.View
             Console.WriteLine("handle");
             new Task(() =>
             {
-                // using (NetworkStream stream = client.GetStream())
-                //using (BinaryReader reader = new BinaryReader(stream))
-                //using (BinaryWriter writer = new BinaryWriter(stream))
-                /* NetworkStream stream = client.GetStream();
-                 StreamReader reader = new StreamReader(stream);
-                 StreamWriter writer = new StreamWriter(stream);*/
-                //{
                 while (true)
                 {
                     try
@@ -52,7 +45,7 @@ namespace server.View
 
                             break;
                         }
-                        Console.WriteLine("Got command: {0}", commandLine);
+                        // Console.WriteLine("Got command: {0}", commandLine);
                         string result = controller.ExecuteCommand(commandLine, cclient);
                         writer.Write(result);
 
@@ -62,7 +55,7 @@ namespace server.View
                         break;
                     }
                 }
-                //}
+
                 client.Close();
             }).Start();
         }
